@@ -15,6 +15,7 @@ Route::get('/user', function (Request $request) {
 
 // Burger Api Routes
 Route::apiResource('burgers', BurgerController::class);
+Route::get('unarchived-burgers', [BurgerController::class, 'getOnlyUnarchivedBurger']);
 Route::put('burgers/{burger}/archive', [BurgerController::class, 'archive']);
 Route::put('burgers/{burger}/restore', [BurgerController::class, 'restore']);
 

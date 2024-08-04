@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderFormRequest;
 use App\Models\Order;
-use App\Notifications\Auth\SendCustomerMailNotification;
+use App\Notifications\SendCustomerMailNotification;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -94,7 +93,7 @@ class OrderController extends Controller
             $order->update(['status' => 'ready']);
 
             $customer = $order->customer;
-            $customer->notify(new SendCustomerMailNotification());
+            $customer->notify(new SendCustomerMailNotification($order));
 
             // Return a JSON response with the specified order
             return response()->json($order, 200);

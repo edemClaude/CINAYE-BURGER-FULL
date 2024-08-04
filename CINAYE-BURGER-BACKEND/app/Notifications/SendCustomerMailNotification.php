@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Notifications\Auth;
+namespace App\Notifications;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,12 +12,13 @@ class SendCustomerMailNotification extends Notification
 {
     use Queueable;
 
+    private Order $order;
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(Order $order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -35,9 +37,15 @@ class SendCustomerMailNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Commande n°'.$this->order->id . ' est confirmée.')
+                    ->line('Merci pour votre commande !')
+                    ->line('Veillez procéder au paiement de votre commande.')
+                    ->attach(public_path($this->order->facture), [
+                        'mime' => 'application/pdf',
+                        'as' => 'facture.pdf',
+                        'disposition' => 'attachment'
+                    ])
+                    ->line('Merci d\'avoir choisi notre application !');
     }
 
     /**
@@ -51,4 +59,5 @@ class SendCustomerMailNotification extends Notification
             //
         ];
     }
+
 }

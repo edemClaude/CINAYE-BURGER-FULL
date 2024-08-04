@@ -142,4 +142,24 @@ class BurgerController extends Controller
             return response()->json($exception->getMessage(), 500);
         }
     }
+
+    /**
+     * Retrieve only unarchived burgers from the database and return them as JSON response.
+     *
+     * @return JsonResponse
+     */
+    public function getOnlyUnarchivedBurger() : JsonResponse
+    {
+        try {
+            // Retrieve unarchived burgers from the database
+            $burgers = Burger::where('is_archived', false)->get();
+
+            // Return JSON response with the unarchived burgers
+            return response()->json($burgers, 200);
+        } catch (\Exception $exception) {
+            // Return JSON response with the error message if an exception occurs
+            return response()->json($exception->getMessage(), 500);
+        }
+    }
+
 }
