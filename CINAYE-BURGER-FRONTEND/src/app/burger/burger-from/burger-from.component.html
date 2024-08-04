@@ -1,0 +1,27 @@
+<form [formGroup]="burgerForm" (ngSubmit)="addBurger()" >
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" placeholder="Name" class="form-control" >
+    <span *ngIf="burgerForm.controls.name.errors && verifForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group">
+    <label for="price">Prix</label>
+    <input type="number" id="price" formControlName="price" placeholder="Price" class="form-control"  >
+    <span *ngIf="burgerForm.controls.price.errors && verifForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" id="description" formControlName="description" placeholder="Description" class="form-control">
+    <span *ngIf="burgerForm.controls.description.errors && verifForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" id="image" formControlName="image" placeholder="Image" class="form-control" >
+    <span *ngIf="burgerForm.controls.image.errors && verifForm">Champ obligatoire</span>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
+
+
+</form>

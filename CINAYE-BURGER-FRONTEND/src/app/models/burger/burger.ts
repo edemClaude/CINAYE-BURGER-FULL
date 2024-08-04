@@ -1,9 +1,9 @@
 export class Burger{
-  id!: number;
+  id?: number;
   name!: string;
-  description!: string;
+  description?: string;
   price!: number;
-  image!: string;
-  is_active!: boolean;
+  image?: string;
   is_archived!: boolean;
+
 }

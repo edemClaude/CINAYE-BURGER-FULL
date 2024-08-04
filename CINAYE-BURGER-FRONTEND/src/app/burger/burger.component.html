@@ -3,7 +3,7 @@
   <div class="mt-5">
     <h1>Burger</h1>
     <p class="lead">Liste des burger</p>
-    <a class="nav-link text-primary" routerLink="">Ajouter</a>
+    <a class="nav-link text-primary" routerLink="/burger/add">Ajouter</a>
   </div>
 
   <div class="mt-5 mb-3">
@@ -19,19 +19,27 @@
             <th scope="col">Id</th>
             <th scope="col">Nom</th>
             <th scope="col">Prix</th>
+            <!--
             <th scope="col">Archiver</th>
+            -->
             <th scope="col">Action</th>
           </tr>
           </thead>
           <tbody>
 
           <tr  *ngFor="let b of listBurger">
-            <td>{{b.id}}</td>
-            <td>{{b.name}}</td>
-            <td>{{b.price}}</td>
+            <td class="{{ b.is_archived ? 'text-secondary' : '' }}">{{b.id}}</td>
+            <td class="{{ b.is_archived ? 'text-secondary' : '' }}">{{b.name}}</td>
+            <td class="{{ b.is_archived ? 'text-secondary' : '' }}">{{b.price}}</td>
+            <!--
             <td class="text-{{b.is_archived ? 'danger' : 'success'}} fw-bold">{{ b.is_archived ? 'Oui' : 'Non'}}</td>
+            -->
             <td>
-              <button class="btn btn-sm btn-danger me-2">Archiver</button>
+              <button (click)="archived(b.id, b.is_archived)"
+                      class="btn btn-sm btn-{{ b.is_archived ? 'primary' : 'danger' }} me-2" >
+                {{b.is_archived ? 'Restaurer' : 'Archiver'}}
+              </button>
+
               <button class="btn btn-sm btn-warning">Modifier</button>
             </td>
           </tr>

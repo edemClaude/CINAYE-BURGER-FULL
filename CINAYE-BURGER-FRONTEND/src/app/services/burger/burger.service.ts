@@ -45,7 +45,7 @@ export class BurgerService {
    * Adds a new burger to the API.
    * @param burger
    */
-  addBurger(burger: Burger) : Observable<Burger>{
+  addBurger(burger: any) : Observable<Burger>{
     return this.http.post<Burger>('http://localhost:8000/api/burgers', burger);
   }
 
@@ -61,7 +61,7 @@ export class BurgerService {
    * Archives an existing burger in the API.
    * @param id
    */
-  archiverBurger(id: number) : Observable<Burger>{
+  archiverBurger(id: number | undefined) : Observable<Burger>{
     return this.http.put<Burger>(`http://localhost:8000/api/burgers/${id}/archive`, null);
   }
 
@@ -69,7 +69,7 @@ export class BurgerService {
    * Restores an archived burger in the API.
    * @param id
    */
-  restoreBurger(id: number) : Observable<Burger>{
+  restoreBurger(id: number | undefined) : Observable<Burger>{
     return this.http.put<Burger>(`http://localhost:8000/api/burgers/${id}/restore`, null);
   }
 }
