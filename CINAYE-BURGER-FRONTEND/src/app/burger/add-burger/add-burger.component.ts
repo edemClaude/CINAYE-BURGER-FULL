@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Burger} from "../../models/burger";
 
 @Component({
   selector: 'app-add-burger',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './add-burger.component.css'
 })
 export class AddBurgerComponent {
+  burger: any = new Burger();
 
 }

@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {BurgerService} from "../services/burger/burger.service";
-import {Burger} from "../models/burger/burger";
+import {BurgerService} from "../services/burger.service";
+import {Burger} from "../models/burger";
 
 @Component(
   {

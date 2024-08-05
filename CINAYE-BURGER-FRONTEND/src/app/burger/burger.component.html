@@ -40,7 +40,7 @@
                 {{b.is_archived ? 'Restaurer' : 'Archiver'}}
               </button>
 
-              <button class="btn btn-sm btn-warning">Modifier</button>
+              <button (click)="edit(b.id)" class="btn btn-sm btn-warning">Modifier</button>
             </td>
           </tr>
 

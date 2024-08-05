@@ -1,0 +1,36 @@
+
+<form [formGroup]="burgerForm" *ngIf="burger" (ngSubmit)="onSubmit()">
+
+  <div class="form-group mb-3">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" placeholder="Name" class="form-control">
+    <span *ngIf="burgerForm.controls.name.errors && verifyForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group mb-3">
+    <label for="price">Prix</label>
+    <input type="number" id="price" formControlName="price" placeholder="Price" class="form-control">
+    <span *ngIf="burgerForm.controls.price.errors && verifyForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group mb-3">
+    <label for="description">Description</label>
+    <textarea formControlName="description" id="description" placeholder="Description" class="form-control"></textarea>
+    <span *ngIf="burgerForm.controls.description.errors && verifyForm">Champ obligatoire</span>
+  </div>
+  <div class="form-group mb-3" *ngIf="!editMode">
+    <label for="image">Image</label>
+    <input type="file" id="image" formControlName="image" placeholder="Image" class="form-control"
+           (change)="onFileChange($event)">
+    <span *ngIf="burgerForm.controls.image.errors && verifyForm">Champ obligatoire</span>
+  </div>
+
+  <div class="form-group">
+
+    <button type="submit" [disabled]="!burgerForm.valid" *ngIf="!editMode" class="btn btn-primary me-3">Ajouter</button>
+
+    <button type="submit" [disabled]="!burgerForm.valid" *ngIf="editMode" class="btn btn-primary">Modifier</button>
+
+    <button type="reset" class="btn btn-secondary">Cancel</button>
+  </div>
+
+</form>
+

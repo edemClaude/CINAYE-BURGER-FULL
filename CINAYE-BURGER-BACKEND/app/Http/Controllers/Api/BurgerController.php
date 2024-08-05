@@ -93,8 +93,18 @@ class BurgerController extends Controller
     public function store(BurgerFormRequest $request) : JsonResponse
     {
         try{
+            $data = $request->validated();
+
+            if ($request->hasFile('image')) {
+                $image = $request->file('image')->store('images', 'public');
+
+                $data['image'] = $image;
+                $data['image'] = asset('storage/'. $data['image']);
+            }
+
+
             // Create a new Burger instance with the validated data from the request
-            $burger = Burger::create($request->validated());
+            $burger = Burger::create($data);
 
             // Return a JSON response with the newly created burger and status code 201 (Created)
             return response()->json($burger, 201);

@@ -25,7 +25,7 @@ class BurgerFormRequest extends FormRequest
             'name' => 'required|unique:burgers,name',
             'price' => 'required|numeric',
             'description' => 'required|max:1000',
-            'image' => 'required|string'
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
         ];
     }
 }

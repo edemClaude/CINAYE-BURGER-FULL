@@ -1,4 +1,13 @@
 <main class="container mt-5">
-<p class="mt-5">add-burger works!</p>
-<app-burger-from></app-burger-from>
+
+  <div class="title mb-3">
+
+    <p class="mt-5"></p>
+    <h1>Ajouter un burger</h1>
+    <p class="lead">Ajouter un nouveau burger</p>
+
+  </div>
+
+  <app-burger-form [burger]="burger" [editMode]="false"></app-burger-form>
+
 </main>

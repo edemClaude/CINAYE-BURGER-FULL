@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Burger} from "../../models/burger/burger";
+import {Burger} from "../models/burger";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -53,7 +53,7 @@ export class BurgerService {
    * Updates an existing burger in the API.
    * @param burger
    */
-  updateBurger(burger: Burger) : Observable<Burger>{
+  updateBurger(burger: any) : Observable<Burger>{
     return this.http.put<Burger>(`http://localhost:8000/api/burgers/${burger.id}`, burger);
   }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {Burger} from "../models/burger/burger";
+import {Burger} from "../models/burger";
 import {HttpClient} from "@angular/common/http";
-import {BurgerService} from "../services/burger/burger.service";
+import {BurgerService} from "../services/burger.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -53,5 +53,13 @@ export class BurgerComponent implements OnInit {
         }
       );
     }
+  }
+
+  edit(id: number | undefined) {
+    this.router.navigate(['/burger/edit', id]).then(
+      () => {
+        console.log(id);
+      }
+    );
   }
 }

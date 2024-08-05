@@ -10,8 +10,8 @@ import {NavComponent} from "./template/nav.component";
 import {HomeComponent} from "./home/home.component";
 import { UpdateBurgerComponent } from './burger/update-burger/update-burger.component';
 import { AddBurgerComponent } from './burger/add-burger/add-burger.component';
-import { BurgerFromComponent } from './burger/burger-from/burger-from.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BurgerFormComponent } from './burger/burger-form/burger-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     UpdateBurgerComponent,
     AddBurgerComponent,
-    BurgerFromComponent,
+    BurgerFormComponent,
   ],
   imports: [
     BrowserModule,
