@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\BurgerController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\UserController;
@@ -43,3 +44,5 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 // Dashboard Routes
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard/filter', [DashboardController::class, 'filter']);
