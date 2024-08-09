@@ -5,6 +5,8 @@ import {OrderService} from "../services/order.service";
 import {FormBuilder} from "@angular/forms";
 import {CustomerService} from "../services/customer.service";
 import {BurgerService} from "../services/burger.service";
+import Chart from 'chart.js/auto';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +19,7 @@ export class DashboardComponent implements OnInit {
   orderForm: any;
   customers: any;
   burgers: any;
+  chart: any;
 
   constructor(private http: HttpClient, private dashService: DashboardService, private orderService: OrderService,
               private fb: FormBuilder, private customerService: CustomerService, private burgerService: BurgerService) {
@@ -35,6 +38,7 @@ export class DashboardComponent implements OnInit {
     this.getCustomers();
     this.getBurgers();
     this.getAllOrders();
+    this.createChart();
   }
 
   getBurgers(){
@@ -87,6 +91,27 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       })
     ;
+  }
+
+  createChart(){
+    this.chart = new Chart("myChart", {
+      type: 'bar',
+      data: {
+        labels: Object.keys(this.stats),
+        datasets: [{
+          label: '# of Votes',
+          data: Object.values(this.stats),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
   }
 
 }

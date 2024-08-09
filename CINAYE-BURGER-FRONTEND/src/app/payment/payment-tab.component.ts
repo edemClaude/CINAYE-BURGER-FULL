@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {OrderService} from "../services/order.service";
-import {FormBuilder, Validators} from "@angular/forms";
 import {PaymentService} from "../services/payment.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-payment-tab',
@@ -12,7 +10,7 @@ import {PaymentService} from "../services/payment.service";
 export class PaymentTabComponent implements OnInit{
   payments: any;
 
-  constructor(private  paymentService: PaymentService) {}
+  constructor(private  paymentService: PaymentService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getPayments();

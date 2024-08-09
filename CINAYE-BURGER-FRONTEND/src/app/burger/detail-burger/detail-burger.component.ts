@@ -10,7 +10,6 @@ import {HttpClient} from "@angular/common/http";
 })
 export class DetailBurgerComponent implements OnInit{
   burger: any;
-
   constructor(private http: HttpClient, private burgerService: BurgerService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -28,5 +27,6 @@ export class DetailBurgerComponent implements OnInit{
       }
     );
   }
+
 
 }

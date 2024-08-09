@@ -1,8 +1,20 @@
 
-<app-nav />
-<!-- <app-admin /> -->
+<app-nav *ngIf="!isLoggedIn()"/>
+<router-outlet *ngIf="!isLoggedIn()"/>
 
-<router-outlet/>
+<footer *ngIf="!isLoggedIn()" class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Application created by Edem Claude KUMAZA for CINAYE-BURGER</p>
+    <p class="mb-0">
+      Copyright © 2024 <a href="https://github.com/edemClaude/CINAYE-BURGER-FULL">CINAYE-BURGER</a> All rights reserved
+    </p>
+  </div>
+</footer>
 
+
+<app-admin *ngIf="isLoggedIn()"/>
 
 

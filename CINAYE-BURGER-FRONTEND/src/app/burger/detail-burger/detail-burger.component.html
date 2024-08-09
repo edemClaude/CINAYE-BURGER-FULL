@@ -6,19 +6,23 @@
       <p class="lead">Detail du {{ burger.name }}</p>
     </div>
 
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img ngSrc="{{ burger.image }}" class="img-fluid rounded-start" alt="..." width="500" height="500"/>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ burger.name }}</h5>
-            <p class="card-text">{{ burger.description }}</p>
-            <p class="card-text"><small class="text-muted"></small></p>
-            <!-- bouton pour commander -->
-            <button type="button" routerLink="/order/{{ burger.id }}" class="btn btn-primary">Commander</button>
-          </div>
+    <div class="row g-3 mb-3 col-10 m-auto">
+      <div class="col-md-4">
+        <img ngSrc="{{ burger.image }}" class="img-fluid rounded-start" alt="..." width="500" height="500"/>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title mb-2">{{ burger.name }}</h5>
+          <br/>
+          <p class="card-text mb-2">{{ burger.description }}</p>
+          <p class="card-text fs-3">Prix :
+            <span class="fw-bold text-primary fs-3"> {{ burger.price }} FCFA</span>
+          </p>
+          <p class="card-text mb-2"><small class="text-muted"></small></p>
+          <!-- bouton pour commander -->
+          <button type="button" routerLink="/order/{{ burger.id }}" class="btn btn-primary btn-lg w-100 mb-0">Commander
+          </button>
         </div>
       </div>
     </div>

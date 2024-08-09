@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BurgerService} from "../../services/burger.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-burger-form',
@@ -97,11 +98,26 @@ export class BurgerFormComponent implements OnInit {
         this.router.navigate(['/burger']).then(() => {
           // Log any success messages
           console.log(data);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Nouveau Burger ajouté avec succès",
+            showConfirmButton: false,
+            timer: 1500
+          }).then();
         });
       },
       (error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Erreur lors de l'ajout du Burger",
+          showConfirmButton: false,
+          timer: 2500
+        }).then(r => {
+          console.error(error);
+        });
         // Log any errors to the console
-        console.error(error);
       }
     );
   }
