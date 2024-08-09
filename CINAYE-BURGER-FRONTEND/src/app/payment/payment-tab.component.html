@@ -1,0 +1,40 @@
+<main class="container">
+
+  <br/><br/><br/><br/>
+  <div class="title">
+    <h1>Paiement</h1>
+    <p class="lead">Liste des paiements</p>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Paiement</th>
+            <th scope="col">Numero de commande</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date de paiement</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of payments">
+            <td>{{ p.id }}</td>
+            <td>{{ p.order_id }}</td>
+            <td>{{ p.amount }} Fcfa</td>
+            <td>{{ p.is_paid ? 'Paiement effectue' : 'En attente' }}</td>
+            <td>{{ p.paid_at }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="paid(p.id)" *ngIf="!p.is_paid">
+                Valider le payment</button>
+              <button type="button" class="btn btn-danger" (click)="cancel(p.id)" *ngIf="!p.is_paid">Annuler</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

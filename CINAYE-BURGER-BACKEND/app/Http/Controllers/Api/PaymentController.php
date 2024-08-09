@@ -94,7 +94,7 @@ class PaymentController extends Controller
             $payments->update(['is_paid' => true, 'paid_at' => now()]);
 
             // Return a JSON response with the updated payment
-            return response()->json(null, 201);
+            return response()->json($payments, 200);
         } catch (\Exception $exception) {
             // Return a JSON response with the exception message
             return response()->json($exception->getMessage(), 500);

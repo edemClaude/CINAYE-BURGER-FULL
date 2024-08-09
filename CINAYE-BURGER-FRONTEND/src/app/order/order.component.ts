@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CustomerService} from "../services/customer.service";
 import {OrderService} from "../services/order.service";
 
@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
   findCustomer: boolean = false;
   customer: any;
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private router: ActivatedRoute,
-              private customerService: CustomerService, private orderService: OrderService) {}
+              private customerService: CustomerService, private orderService: OrderService, private navRoute: Router) {}
 
   showClientForm() {
     if (this.showSearchForm) {
@@ -63,6 +63,7 @@ export class OrderComponent implements OnInit {
     this.orderService.addOrder(this.orderForm.value).subscribe(
       (data) => {
         console.log(data);
+        this.navRoute.navigate(['/payment/' + data.id]);
       },
       (error) => {
         console.log(error);

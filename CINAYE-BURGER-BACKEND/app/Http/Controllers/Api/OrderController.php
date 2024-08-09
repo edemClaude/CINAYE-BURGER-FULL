@@ -78,6 +78,7 @@ class OrderController extends Controller
     public function show(Order $order) : JsonResponse
     {
         try {
+            $order->load('customer', 'burger');
             // Return a JSON response with the specified order
             return response()->json($order, 200);
         } catch (\Exception $exception) {

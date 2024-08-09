@@ -7,6 +7,8 @@ import {UpdateBurgerComponent} from "./burger/update-burger/update-burger.compon
 import {DetailBurgerComponent} from "./burger/detail-burger/detail-burger.component";
 import {OrderComponent} from "./order/order.component";
 import {OrderTabComponent} from "./order/order-tab/order-tab.component";
+import {PaymentComponent} from "./payment/payment.component";
+import {PaymentTabComponent} from "./payment/payment-tab.component";
 
 const routes: Routes = [
   { path: 'burger', component: BurgerComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'burger/edit/:id', component: UpdateBurgerComponent},
   { path: 'order/:id', component: OrderComponent },
   { path: 'order', component: OrderTabComponent },
+  { path: 'payment/:id', component: PaymentComponent },
+  { path: 'payment', component: PaymentTabComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

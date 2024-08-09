@@ -1,0 +1,38 @@
+<main class="container">
+  <br/><br/><br/><br/>
+  <div class="title">
+    <h1>Paiement</h1>
+    <p class="lead">Merci de procéder au paiement </p>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"><span class="fw-bold"> Client: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ order.customer?.name }} {{ order.customer?.last_name }} </p>
+            <p class="card-text"><span class="fw-bold"> Burger: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {{ order.burger?.name }} </p>
+            <p class="card-text"><span class="fw-bold"> Quantité: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ order.quantity }} Burgers</p>
+            <p class="card-text"><span class="fw-bold"> Prix: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ order.burger?.price }} F CFA </p>
+            <br/>
+            <p class="card-text"><span class="fw-bold"> Total: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="text-danger">{{ order.quantity * order.burger?.price }} F CFA</span> </p>
+            <input type="hidden" formControlName="order_id" value="{{ order.id }}" />
+            <input type="hidden" formControlName="amount" value="{{ order.quantity * order.burger?.price }}"/>
+            <input type="hidden" formControlName="is_paid" value="true"/>
+            <input type="hidden" formControlName="paid_at"/>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary me-2">Payer</button>
+            <button type="reset" class="btn btn-danger">Annuler</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
