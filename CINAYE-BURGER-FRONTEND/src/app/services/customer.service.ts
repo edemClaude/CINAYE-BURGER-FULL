@@ -39,6 +39,14 @@ export class CustomerService {
   }
 
   /**
+   * Get a specific customer by email
+   * @param search
+   */
+  findCustomer(search: string) : Observable<Customer> {
+    return this.http.get<Customer>(`http://localhost:8000/api/customers/find/${search}`);
+  }
+
+  /**
    * GET all orders for a specific client by it id
    * @param id
    */

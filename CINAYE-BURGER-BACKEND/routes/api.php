@@ -23,6 +23,7 @@ Route::put('burgers/{burger}/restore', [BurgerController::class, 'restore']);
 // Customer Api Routes
 Route::apiResource('customers', CustomerController::class)->except('destroy', 'update');
 Route::get('customers/{customer}/orders', [CustomerController::class, 'customerOrders']);
+Route::get('customers/find/{search}', [CustomerController::class, 'findCustomer']);
 
 // Order Api Routes
 Route::apiResource('orders', OrderController::class) -> except('destroy', 'update');

@@ -1,0 +1,47 @@
+<main class="container">
+  <br/><br/><br/>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Client
+          <div class="float-end">
+            <!-- btn pour ajouter un nouveau client -->
+            <button type="button" class="btn btn-primary me-3" (click)="showClientForm()">
+              Ajouter un nouveau client
+            </button>
+            <!-- btn rechercher un client -->
+            <button type="button" class="btn btn-primary"
+                    (click)="showSearchClientForm()">Rechercher un client</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-customer-form *ngIf="showForm" (addCustomer)="onSubmit($event)"></app-customer-form>
+
+          <form class="form-inline" *ngIf="showSearchForm" [formGroup]="searchForm" (ngSubmit)="searchClient()">
+            <input id="search" formControlName="search" type="text" class="form-control"
+                   placeholder="email ou numéro de téléphone">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+          </form>
+
+          <p *ngIf="!showForm && !showSearchForm">
+            Veuillez cliquer sur le bouton pour ajouter un nouveau client ou sur le bouton pour rechercher un client
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <form class="form-inline" [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+        <input id="burger_id" formControlName="burger_id" type="hidden">
+        <input id="customer_id" formControlName="customer_id" type="hidden">
+        <div class="form-group">
+          <label for="quantity">Quantité:</label>
+          <input id="quantity" formControlName="quantity" type="number" class="form-control" max="10">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Commander</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

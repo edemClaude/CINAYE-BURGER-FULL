@@ -4,12 +4,17 @@ import {BurgerComponent} from "./burger/burger.component";
 import {HomeComponent} from "./home/home.component";
 import {AddBurgerComponent} from "./burger/add-burger/add-burger.component";
 import {UpdateBurgerComponent} from "./burger/update-burger/update-burger.component";
+import {DetailBurgerComponent} from "./burger/detail-burger/detail-burger.component";
+import {OrderComponent} from "./order/order.component";
 
 const routes: Routes = [
   { path: 'burger', component: BurgerComponent },
   { path: 'burger/add', component: AddBurgerComponent },
+  { path: 'burger/:id', component: DetailBurgerComponent},
   { path: 'burger/edit/:id', component: UpdateBurgerComponent},
+  { path: 'order/:id', component: OrderComponent },
   { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

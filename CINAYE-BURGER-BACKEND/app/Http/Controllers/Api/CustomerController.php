@@ -86,4 +86,24 @@ class CustomerController extends Controller
     }
 
 
+    /**
+     * Get the customer by email or phone.
+     *
+     * @param string $search
+     * @return JsonResponse
+     */
+    public function findCustomer(string $search) : JsonResponse
+    {
+        try {
+            $customer = Customer::where('email', 'like', '%' . $search . '%')
+                ->orWhere('phone', 'like', '%' . $search . '%')->first();
+            // Return a JSON response with the specified customer
+            return response()->json($customer, 200);
+        } catch (Exception $exception) {
+            // Return a JSON response with the exception message
+            return response()->json($exception->getMessage(), 500);
+        }
+    }
+
+
 }

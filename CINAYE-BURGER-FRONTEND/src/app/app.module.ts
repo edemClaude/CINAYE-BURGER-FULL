@@ -12,6 +12,10 @@ import { UpdateBurgerComponent } from './burger/update-burger/update-burger.comp
 import { AddBurgerComponent } from './burger/add-burger/add-burger.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BurgerFormComponent } from './burger/burger-form/burger-form.component';
+import { AdminComponent } from './template/admin/admin.component';
+import { OrderComponent } from './order/order.component';
+import { DetailBurgerComponent } from './burger/detail-burger/detail-burger.component';
+import { CustomerFormComponent } from './customer/customer-form/customer-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { BurgerFormComponent } from './burger/burger-form/burger-form.component'
     UpdateBurgerComponent,
     AddBurgerComponent,
     BurgerFormComponent,
+    AdminComponent,
+    OrderComponent,
+    DetailBurgerComponent,
+    CustomerFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,26 @@
+
+  <div class="container">
+    <br/> <br/>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1>Detail du burger</h1>
+      <p class="lead">Detail du {{ burger.name }}</p>
+    </div>
+
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img ngSrc="{{ burger.image }}" class="img-fluid rounded-start" alt="..." width="500" height="500"/>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ burger.name }}</h5>
+            <p class="card-text">{{ burger.description }}</p>
+            <p class="card-text"><small class="text-muted"></small></p>
+            <!-- bouton pour commander -->
+            <button type="button" routerLink="/order/{{ burger.id }}" class="btn btn-primary">Commander</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
