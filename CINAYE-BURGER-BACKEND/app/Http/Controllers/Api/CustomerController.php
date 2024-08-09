@@ -96,7 +96,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::where('email', 'like', '%' . $search . '%')
-                ->orWhere('phone', 'like', '%' . $search . '%')->first();
+                ->orWhere('phone', $search)->first();
             // Return a JSON response with the specified customer
             return response()->json($customer, 200);
         } catch (Exception $exception) {

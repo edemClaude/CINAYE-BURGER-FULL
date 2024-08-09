@@ -1,6 +1,12 @@
 <main class="container">
   <br/><br/><br/>
-  <div class="row">
+  <div>
+    <h1>Commander un burger</h1>
+    <p class="lead">Commander un burger</p>
+    <hr/>
+  </div>
+
+  <div class="row mt-5">
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
@@ -27,6 +33,11 @@
           <p *ngIf="!showForm && !showSearchForm">
             Veuillez cliquer sur le bouton pour ajouter un nouveau client ou sur le bouton pour rechercher un client
           </p>
+          <p class="card-text" *ngIf="findCustomer">
+            {{ customer?.first_name }} {{ customer?.name }}
+          </p>
+          <p class="card-text" *ngIf="findCustomer"> {{ customer?.email }}</p>
+          <p class="card-text" *ngIf="findCustomer"> {{ customer?.phone }}</p>
         </div>
       </div>
     </div>
@@ -34,8 +45,8 @@
       <form class="form-inline" [formGroup]="orderForm" (ngSubmit)="submitOrder()">
         <input id="burger_id" formControlName="burger_id" type="hidden">
         <input id="customer_id" formControlName="customer_id" type="hidden">
-        <div class="form-group">
-          <label for="quantity">Quantité:</label>
+        <div class="form-group mb-2">
+          <label for="quantity" class="form-label">Quantité:</label>
           <input id="quantity" formControlName="quantity" type="number" class="form-control" max="10">
         </div>
         <div class="form-group">

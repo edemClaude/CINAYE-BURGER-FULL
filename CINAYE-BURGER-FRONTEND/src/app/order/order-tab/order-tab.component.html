@@ -1,0 +1,35 @@
+<main class="container">
+  <br/><br/><br/>
+  <div>
+    <h1> List des commandes</h1>
+    <p class="lead">Afficher la liste des commandes</p>
+    <hr/>
+  </div>
+  <div class="card mb-3">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Commande</th>
+          <th scope="col">Burger</th>
+          <th scope="col">Client</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.burger?.name }}</td>
+          <td>{{ order.customer?.first_name }} {{ order.customer?.name }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>
+            <button type="button" class="btn btn-danger me-3" *ngIf="order.status === 'pending'"
+                    (click)="cancelOrder(order.id)">Annuler la commande</button>
+            <button type="button" class="btn btn-primary" (click)="finishOrder(order.id)"> Terminer la commande </button>
+          </td>
+    </table>
+  </div>
+
+</main>

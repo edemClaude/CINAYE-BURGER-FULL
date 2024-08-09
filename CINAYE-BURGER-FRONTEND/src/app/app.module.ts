@@ -16,6 +16,7 @@ import { AdminComponent } from './template/admin/admin.component';
 import { OrderComponent } from './order/order.component';
 import { DetailBurgerComponent } from './burger/detail-burger/detail-burger.component';
 import { CustomerFormComponent } from './customer/customer-form/customer-form.component';
+import { OrderTabComponent } from './order/order-tab/order-tab.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CustomerFormComponent } from './customer/customer-form/customer-form.co
     OrderComponent,
     DetailBurgerComponent,
     CustomerFormComponent,
+    OrderTabComponent,
   ],
   imports: [
     BrowserModule,

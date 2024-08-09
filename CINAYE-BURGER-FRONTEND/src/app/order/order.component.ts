@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit {
   orderForm: any;
   searchForm: any;
   findCustomer: boolean = false;
+  customer: any;
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private router: ActivatedRoute,
               private customerService: CustomerService, private orderService: OrderService) {}
 
@@ -45,6 +46,7 @@ export class OrderComponent implements OnInit {
       this.customerService.addCustomer(customer).subscribe(
         (data) => {
           console.log(data);
+          this.customer = data;
           this.findCustomer = true;
           this.orderForm.patchValue({
             customer_id: data.id
@@ -79,6 +81,7 @@ export class OrderComponent implements OnInit {
     this.customerService.findCustomer(this.searchForm.value.search).subscribe(
       (data) => {
         console.log(data);
+        this.customer = data;
         this.findCustomer = true;
         this.orderForm.patchValue({
           customer_id: data.id

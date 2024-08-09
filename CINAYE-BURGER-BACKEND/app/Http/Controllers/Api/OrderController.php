@@ -60,7 +60,7 @@ class OrderController extends Controller
     {
         try {
             // Update the 'is_cancelled' attribute of the order to true
-            $order->update(['is_canceled' => true]);
+            $order->update(['status' => 'canceled']);
             // Return a JSON response with the updated order and status code 200 (OK)
             return response()->json($order, 200);
         } catch (\Exception $exception) {
@@ -91,9 +91,10 @@ class OrderController extends Controller
         try {
             // Update the 'is_ready' attribute of the order to true
             $order->update(['status' => 'ready']);
-
+            /*
             $customer = $order->customer;
             $customer->notify(new SendCustomerMailNotification($order));
+            */
 
             // Return a JSON response with the specified order
             return response()->json($order, 200);
