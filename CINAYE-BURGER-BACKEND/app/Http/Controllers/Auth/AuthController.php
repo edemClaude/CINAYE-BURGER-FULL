@@ -51,18 +51,21 @@ class AuthController extends Controller
     public function login(Request $request) : JsonResponse
     {
         // Check if the user login attempt is valid
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['message' => 'Invalid login details'], 401);
-        }
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
 
         // Retrieve the logged-in user
-        $loggedInUser = User::where('email', $request->email)->firstOrFail();
+        $loggedInUser = User::where('email', $request->email)
+            ->first();
 
-        // Generate the access token for the logged-in user
-        $accessToken = $loggedInUser->createToken('auth_token')->plainTextToken;
+        if ($loggedInUser !== null) {
+            return response()->json(['message' => 'Successfully logged in'], 200);
+        }
 
         // Return the access token and token type in JSON format
-        return response()->json(['access_token' => $accessToken, 'token_type' => 'Bearer']);
+        return response()->json(['message' => 'Unauthorized'], 401);
     }
 
     /**

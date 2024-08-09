@@ -1,0 +1,114 @@
+<main class="container">
+
+  <br/><br/><br/><br/>
+  <div>
+    <h1>Dashboard</h1>
+    <p class="lead">Bienvenue dans le tableau de bord</p>
+    <hr>
+  </div>
+
+  <div class="row mt-3 mb-3">
+    <div class="col-md-4">
+      <div class="card bg-primary">
+        <div class="card-body">
+          <h5 class="card-title">Commande en attente de la journée</h5>
+          <p class="card-text">
+            <span class="fs-1 fw-bold">{{ stats.daily_pending_order_count ?? 0 }}</span> Burgers
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-success">
+        <div class="card-body">
+          <h5 class="card-title">Commandes validées de la journée</h5>
+          <p class="card-text">
+            <span class="fs-1 fw-bold">{{ stats.daily_validated_order_count ?? 0}}</span> Burgers
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-danger">
+        <div class="card-body">
+          <h5 class="card-title">Commandes annulées de la journée</h5>
+          <p class="card-text">
+            <span class="fs-1 fw-bold"> {{ stats.daily_canceled_order_count ?? 0 }}</span> Burgers
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: Placer deux graphe ici -->
+
+  <div class="row mt-5">
+    <div class="col">
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+        <div class="col">
+          <label for="customer" class="form-label">Client</label>
+          <select class="form-select" id="customer" formControlName="customer">
+            <option selected value="">Choisir...</option>
+            <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.first_name }} {{ customer.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="burger" class="form-label">Burger</label>
+          <select class="form-select" id="burger" formControlName="burger">
+            <option selected value="">Choisir...</option>
+            <option *ngFor="let burger of burgers" [value]="burger.id">{{ burger.name }}</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date">
+        </div>
+
+        <div class="col">
+          <label for="status" class="form-label">Statut</label>
+          <select class="form-select" id="status" name="status">
+            <option selected value="">Choisir...</option>
+            <option value="pending">En attente</option>
+            <option value="ready">Prête</option>
+            <option value="canceled">Annulé</option>
+          </select>
+        </div>
+
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary">filtrer</button>
+          <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <div class="table-responsive mt-3">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client</th>
+            <th scope="col">Burger</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.customer?.first_name }} {{ order.customer?.name }}</td>
+            <td>{{ order.burger?.name }}</td>
+            <td>{{ order.burger?.price * order.quantity }} F CFA</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.created_at | date: 'yyyy-MM-dd' }}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</main>
