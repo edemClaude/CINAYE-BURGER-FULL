@@ -32,7 +32,7 @@ class DashboardController extends Controller
                 'daily_order_count' => $this->dailyOrderCount(), // Get daily order count
                 'daily_validated_order_count' => $this->dailyValidatedOrderCount(), // Get daily validated order count
                 'daily_pending_order_count' => $this->dailyPendingOrderCount(), // Get daily pending order count
-                'daily_cancelled_order_count' => $this->dailyCanceledOrderCount(), // Get daily canceled order count
+                'daily_canceled_order_count' => $this->dailyCanceledOrderCount(), // Get daily canceled order count
                 'daily_revenue' => $this->dailyRevenue(), // Get daily revenue
             ]);
         } catch (Exception $e) {
@@ -81,7 +81,7 @@ class DashboardController extends Controller
             $query->where('status', $request->input()['status']);
         }
 
-        $orders = $query->get();
+        $orders = $query->with('customer', 'burger')->get();
 
         return response()->json([
             'orders' => $orders
